@@ -111,8 +111,8 @@ window.LINKS={linkedin:"https://www.linkedin.com/in/taibajamil00",github:"https:
   if(note&&shown===0)note.hidden=false;
 })();
 window.T_JAY_API = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "http://localhost:8001/chat" // local dev
-  : "https://t-jay-api.onrender.com/chat"; // production (Render)
+  ? "http://localhost:8001/chat" // optional local FastAPI backend
+  : "/api/chat"; // Cloudflare Pages Function — Gemini key stays server-side as a secret
 
 (function(){
  var tog=document.getElementById('tjayToggle'),panel=document.getElementById('tjayPanel'),
@@ -209,7 +209,6 @@ window.T_JAY_API = (location.hostname === "localhost" || location.hostname === "
   }
   setTimeout(function(){typing.remove();addMsg(localReply(q),'bot');},380);
  }
-
  form.addEventListener('submit',function(e){e.preventDefault();handleQuery(inp.value)});
  if(prompts){
   prompts.addEventListener('click',function(e){
